@@ -48,7 +48,7 @@ export default function ExploreAgentsPage() {
     <div className="relative min-h-screen bg-white pb-16">
       {/* Faint SVG background and radial fade */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" className="w-full h-full absolute opacity-5">
+        <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" className="w-full h-full absolute opacity-2">
           <circle cx="300" cy="200" r="80" stroke="#a5b4fc" strokeWidth="2" />
           <circle cx="1100" cy="600" r="100" stroke="#fbcfe8" strokeWidth="2" />
           <line x1="300" y1="200" x2="1100" y2="600" stroke="#e0e7ef" strokeWidth="1.5" opacity="0.5" />
@@ -58,11 +58,12 @@ export default function ExploreAgentsPage() {
       </div>
       {/* Header */}
       <div className="relative z-10 max-w-3xl mx-auto pt-24 pb-2 px-4 flex flex-col items-center">
+        <Link href="/agents/new" className="absolute top-2 right-4 rounded-full bg-blue-600 text-white text-sm font-semibold px-4 py-2 shadow hover:bg-blue-700">+ Publish Agent</Link>
         <h1 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight text-center max-w-3xl">Explore Modular Intelligence</h1>
         <p className="text-lg text-gray-500 mb-2 text-center max-w-2xl">Browse AI agents built by the community, tailored for enterprise workflows.</p>
       </div>
       {/* Search bar and filters anchored together */}
-      <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-3 px-4">
+      <div className="relative z-10 max-w-screen-xl mx-auto flex flex-col gap-3 px-4">
         <div className="relative w-full flex items-center">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
@@ -72,7 +73,7 @@ export default function ExploreAgentsPage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search agents by name or function…"
-            className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-gray-200 bg-white text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-all duration-200 shadow-sm focus-within:shadow-lg"
+            className="w-full pl-10 pr-4 py-2 rounded-3xl border border-gray-200 bg-white text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-all duration-200 shadow-sm focus-within:shadow-lg"
           />
         </div>
         <div className="flex flex-wrap gap-2 items-center mt-0">
