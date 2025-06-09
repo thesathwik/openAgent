@@ -1,5 +1,4 @@
 import { Navbar, Hero, BackgroundNetwork } from "./components";
-import Link from "next/link";
 
 export default function Home() {
   return (
