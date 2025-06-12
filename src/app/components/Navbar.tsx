@@ -7,6 +7,8 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Set to true for demo
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -64,13 +66,33 @@ export default function Navbar() {
         ))}
       </div>
       {/* Sign In Button (right) */}
-      <div className="flex items-center min-w-[120px] justify-end">
-        <Link
-          href="/signin"
-          className="border border-gray-400 rounded-full px-5 py-2 text-gray-700 bg-white/60 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] font-semibold backdrop-blur-md"
-        >
-          Sign In
-        </Link>
+      <div className="flex items-center min-w-[120px] justify-end relative">
+        {isAuthenticated ? (
+          <>
+            <button
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold shadow transition-all duration-200"
+              onClick={() => setDropdownOpen(v => !v)}
+              aria-haspopup="true"
+              aria-expanded={dropdownOpen}
+            >
+              <span className="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center font-bold text-blue-700">U</span>
+              <span className="hidden sm:inline">Profile</span>
+            </button>
+            {dropdownOpen && (
+              <div className="absolute right-0 top-12 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 z-50 py-2">
+                <Link href="/user/settings" className="block px-5 py-2 text-gray-700 hover:bg-blue-50 transition-all">Account Settings</Link>
+                <button className="block w-full text-left px-5 py-2 text-red-600 hover:bg-red-50 transition-all" onClick={() => setIsAuthenticated(false)}>Sign Out</button>
+              </div>
+            )}
+          </>
+        ) : (
+          <Link
+            href="/signin"
+            className="border border-gray-400 rounded-full px-5 py-2 text-gray-700 bg-white/60 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] font-semibold backdrop-blur-md"
+          >
+            Sign In
+          </Link>
+        )}
       </div>
     </nav>
   );
