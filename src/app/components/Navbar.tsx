@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -32,19 +34,33 @@ export default function Navbar() {
       {/* Navigation Links (center) */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-8 text-base font-medium text-gray-700">
         {[
-          { label: 'Explore Agents', href: '#agents' },
+          { label: 'Explore Agents', href: '/agents' },
           { label: 'How it Works', href: '#how' },
           { label: 'Stories', href: '#stories' },
           { label: 'Deploy Yours', href: '#deploy' },
         ].map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="relative transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:text-black"
-          >
-            <span>{link.label}</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-black rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:w-full hover:w-full" />
-          </a>
+          link.href.startsWith('/') ? (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`relative transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:text-black ${pathname === link.href ? 'text-blue-600 font-bold' : ''}`}
+            >
+              <span>{link.label}</span>
+              {pathname === link.href && (
+                <span className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-2 h-2 bg-blue-500 rounded-full"></span>
+              )}
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-black rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:w-full hover:w-full" />
+            </Link>
+          ) : (
+            <a
+              key={link.href}
+              href={link.href}
+              className="relative transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:text-black"
+            >
+              <span>{link.label}</span>
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-black rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:w-full hover:w-full" />
+            </a>
+          )
         ))}
       </div>
       {/* Sign In Button (right) */}
