@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Navbar } from '../components';
 
 const AGENT_TAGS = ['Finance', 'Customer Support', 'DevOps', 'NLP', 'OpenSource', 'Productivity'];
 const AGENTS = [
@@ -45,7 +46,8 @@ export default function ExploreAgentsPage() {
   );
 
   return (
-    <div className="relative min-h-screen bg-white pb-16">
+    <div className="relative min-h-screen bg-white pb-16 font-sans">
+      <Navbar />
       {/* Faint SVG background and radial fade */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" className="w-full h-full absolute opacity-2">
@@ -58,7 +60,12 @@ export default function ExploreAgentsPage() {
       </div>
       {/* Header */}
       <div className="relative z-10 max-w-3xl mx-auto pt-24 pb-2 px-4 flex flex-col items-center">
-        <Link href="/agents/new" className="absolute top-2 right-4 rounded-full bg-blue-600 text-white text-sm font-semibold px-4 py-2 shadow hover:bg-blue-700">+ Publish Agent</Link>
+        <Link
+          href="/agents/new"
+          className="fixed bottom-5 right-5 z-20 rounded-full bg-blue-600 text-white text-sm font-semibold px-4 py-2 shadow hover:bg-blue-700"
+        >
+          + Publish Agent
+        </Link>
         <h1 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight text-center max-w-3xl">Explore Modular Intelligence</h1>
         <p className="text-lg text-gray-500 mb-2 text-center max-w-2xl">Browse AI agents built by the community, tailored for enterprise workflows.</p>
       </div>
@@ -113,7 +120,12 @@ export default function ExploreAgentsPage() {
             </div>
             <div className="flex gap-2 w-full justify-start mt-auto">
               <button className="px-4 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 text-sm font-semibold transition-all">Quick Deploy</button>
-              <Link href={`/agents/${agent.id}`} className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700 hover:scale-105 transition-all">View Agent</Link>
+              <Link
+                href={`/agents/${agent.id}`}
+                className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700 hover:scale-105 transition-all inline-flex items-center justify-center"
+              >
+                View Agent
+              </Link>
             </div>
           </div>
         ))}
