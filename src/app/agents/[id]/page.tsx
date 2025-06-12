@@ -27,6 +27,14 @@ const agent = {
   ],
 };
 
+export async function generateStaticParams() {
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ];
+}
+
 export default function AgentDetailPage() {
   return (
     <div className="min-h-screen bg-white font-sans px-4 pb-16">
