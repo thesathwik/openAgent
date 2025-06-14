@@ -61,12 +61,12 @@ export default function ExploreAgentsPage() {
       {/* Header */}
       <div className="relative z-10 max-w-3xl mx-auto pt-24 pb-2 px-4 flex flex-col items-center">
         <h1 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight text-center max-w-3xl font-sans">Explore Modular Intelligence</h1>
-        <p className="text-lg text-gray-500 mb-2 text-center max-w-2xl font-sans">Browse AI agents built by the community, tailored for enterprise workflows.</p>
+        <p className="text-lg text-gray-800 mb-2 text-center max-w-2xl font-sans">Browse AI agents built by the community, tailored for enterprise workflows.</p>
       </div>
       {/* Search bar and filters anchored together */}
       <div className="relative z-10 max-w-screen-xl mx-auto flex flex-col gap-3 px-4 font-sans">
         <div className="relative w-full flex items-center">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
           </span>
           <input
@@ -74,7 +74,7 @@ export default function ExploreAgentsPage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search agents by name or function…"
-            className="w-full pl-10 pr-4 py-2 rounded-3xl border border-gray-200 bg-white text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-all duration-200 shadow-sm focus-within:shadow-lg font-sans"
+            className="w-full pl-10 pr-4 py-2 rounded-3xl border border-gray-200 bg-white text-base text-gray-800 placeholder-gray-700 focus:outline-none focus:border-blue-400 transition-all duration-200 shadow-sm focus-within:shadow-lg font-sans"
           />
         </div>
         <div className="flex flex-wrap gap-2 items-center mt-0 font-sans">
@@ -83,7 +83,7 @@ export default function ExploreAgentsPage() {
               key={tag}
               className={`px-4 py-1.5 rounded-full text-sm border transition-all duration-200 cursor-pointer font-sans ${selectedTags.includes(tag)
                 ? 'bg-blue-50 text-blue-600 font-semibold border-blue-200'
-                : 'bg-white text-gray-600 font-medium border-gray-200 hover:bg-gray-100 hover:font-semibold'}`}
+                : 'bg-white text-gray-800 font-medium border-gray-200 hover:bg-gray-100 hover:font-semibold'}`}
               onClick={() => setSelectedTags(selectedTags.includes(tag) ? selectedTags.filter(t => t !== tag) : [...selectedTags, tag])}
               type="button"
             >
@@ -106,10 +106,10 @@ export default function ExploreAgentsPage() {
               </div>
             </div>
             <div className="font-semibold text-xl text-black mb-1 text-left tracking-tight leading-tight font-sans">{agent.name}</div>
-            <div className="text-gray-500 text-sm mb-2 text-left line-clamp-2 leading-relaxed font-sans">{agent.description}</div>
+            <div className="text-gray-800 text-sm mb-2 text-left line-clamp-2 leading-relaxed font-sans">{agent.description}</div>
             <div className="flex flex-wrap gap-1 mb-4 justify-start font-sans">
               {agent.tags.map(tag => (
-                <span key={tag} className="px-2 py-0.5 rounded-full bg-gray-100 text-xs text-gray-600 font-medium font-sans">#{tag}</span>
+                <span key={tag} className="px-2 py-0.5 rounded-full bg-gray-100 text-xs text-gray-800 font-medium font-sans">#{tag}</span>
               ))}
             </div>
             <div className="flex w-full justify-start mt-auto font-sans">
@@ -124,7 +124,7 @@ export default function ExploreAgentsPage() {
           </div>
         ))}
         {filteredAgents.length === 0 && (
-          <div className="col-span-full text-center text-gray-400 py-12 font-sans">No agents found.</div>
+          <div className="col-span-full text-center text-gray-800 py-12 font-sans">No agents found.</div>
         )}
       </div>
       {/* Fixed Publish Agent Button */}

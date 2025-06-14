@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath: "/openAgent",
-  assetPrefix: "/openAgent/",
+  // Development configuration
+  reactStrictMode: true,
 };
 
 export default nextConfig;

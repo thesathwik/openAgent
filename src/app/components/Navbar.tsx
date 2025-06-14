@@ -37,9 +37,9 @@ export default function Navbar() {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-8 text-base font-medium text-gray-700">
         {[
           { label: 'Explore Agents', href: '/agents' },
-          { label: 'How it Works', href: '#how' },
+          { label: 'How it Works', href: '/how-it-works' },
           { label: 'Stories', href: '#stories' },
-          { label: 'Deploy Yours', href: '#deploy' },
+          { label: 'Developers Hub', href: '/developers-hub' },
         ].map((link) => (
           link.href.startsWith('/') ? (
             <Link
