@@ -253,7 +253,130 @@ export default function ExploreAgentsPage() {
           )}
         </div>
       </div>
-      {/* TODO: Featured/View All sections in next step */}
+      {/* Agents grid */}
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-10 mt-8 font-sans">
+        {filteredAgents.map(agent => (
+          <div
+            key={agent.id}
+            className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-2 flex flex-col items-start p-6 cursor-pointer relative overflow-hidden font-sans"
+          >
+            {/* Animated orb/icon */}
+            <div className="mb-4 self-center">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-100 via-pink-100 to-white flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                <Image src={agent.icon} alt={agent.name} width={40} height={40} className="transition-transform duration-300 group-hover:scale-110 group-hover:animate-pulse-slow" />
+              </div>
+            </div>
+            <div className="font-semibold text-xl text-black mb-1 text-left tracking-tight leading-tight font-sans">{agent.name}</div>
+            <div className="text-gray-800 text-sm mb-2 text-left line-clamp-2 leading-relaxed font-sans">{agent.description}</div>
+            <div className="flex flex-wrap gap-1 mb-4 justify-start font-sans">
+              {agent.tags.map(tag => (
+                <span key={tag} className="px-2 py-0.5 rounded-full bg-gray-100 text-xs text-gray-800 font-medium font-sans">#{tag}</span>
+              ))}
+            </div>
+            <div className="flex w-full justify-start mt-auto font-sans">
+              <Link
+                href={`/agents/${agent.id}`}
+                className="know-agent-btn"
+                style={{ minWidth: '120px', fontWeight: 600, fontSize: '0.98rem', letterSpacing: '-0.01em', padding: '0.55rem 1.4rem' }}
+              >
+                Know Agent
+              </Link>
+            </div>
+          </div>
+        ))}
+        {filteredAgents.length === 0 && (
+          <div className="col-span-full text-center text-gray-800 py-12 font-sans">No agents found.</div>
+        )}
+      </div>
+      {/* Fixed Publish Agent Button */}
+      <Link
+        href="/agents/new"
+        className="publish-agent-btn"
+        style={{ fontWeight: 600, fontSize: '0.98rem', letterSpacing: '-0.01em', padding: '0.55rem 1.4rem' }}
+      >
+        + Publish Agent
+      </Link>
+      <style jsx global>{`
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-float {
+          animation: float 2.4s ease-in-out infinite;
+        }
+        .know-agent-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.75rem 2.2rem;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.7) 60%, rgba(59,130,246,0.13) 100%);
+          box-shadow: 0 4px 32px 0 rgba(59,130,246,0.13), 0 1.5px 8px 0 rgba(59,130,246,0.10), 0 0 0 0 rgba(59,130,246,0.10);
+          border: 1.5px solid rgba(59,130,246,0.18);
+          color: #2563eb;
+          font-family: 'Inter', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          transition: all 0.18s cubic-bezier(.4,0,.2,1);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          position: relative;
+          overflow: hidden;
+        }
+        .know-agent-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: radial-gradient(circle at 60% 40%, rgba(59,130,246,0.10) 0%, rgba(59,130,246,0.03) 100%);
+          z-index: 0;
+        }
+        .know-agent-btn:hover, .know-agent-btn:focus {
+          color: #fff;
+          background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+          box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18), 0 2px 12px 0 rgba(59,130,246,0.10);
+          border: 1.5px solid #2563eb;
+        }
+        .know-agent-btn span {
+          position: relative;
+          z-index: 1;
+        }
+        .publish-agent-btn {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.85rem 2.4rem;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.85) 60%, rgba(59,130,246,0.15) 100%);
+          box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18), 0 2px 12px 0 rgba(59,130,246,0.10);
+          border: 1.5px solid rgba(59,130,246,0.18);
+          color: #2563eb;
+          font-family: 'Inter', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          transition: all 0.18s cubic-bezier(.4,0,.2,1);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          overflow: hidden;
+        }
+        .publish-agent-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: radial-gradient(circle at 60% 40%, rgba(59,130,246,0.13) 0%, rgba(59,130,246,0.04) 100%);
+          z-index: 0;
+        }
+        .publish-agent-btn:hover, .publish-agent-btn:focus {
+          color: #fff;
+          background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+          box-shadow: 0 12px 36px 0 rgba(59,130,246,0.22), 0 4px 16px 0 rgba(59,130,246,0.13);
+          border: 1.5px solid #2563eb;
+        }
+      `}</style>
     </div>
   );
 } 
