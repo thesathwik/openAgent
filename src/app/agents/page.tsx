@@ -135,6 +135,21 @@ export default function ExploreAgentsPage() {
       >
         + Publish Agent
       </Link>
+      {/* Floating Find Agent Button */}
+      <Link
+        href="/agents/find"
+        className="find-agent-btn"
+        style={{ fontWeight: 600, fontSize: '0.98rem', letterSpacing: '-0.01em', padding: '0.55rem 1.4rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}
+        aria-label="Find Agent"
+      >
+        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="inline-block">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </span>
+        Find Agent
+      </Link>
       <style jsx global>{`
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -210,6 +225,41 @@ export default function ExploreAgentsPage() {
           z-index: 0;
         }
         .publish-agent-btn:hover, .publish-agent-btn:focus {
+          color: #fff;
+          background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+          box-shadow: 0 12px 36px 0 rgba(59,130,246,0.22), 0 4px 16px 0 rgba(59,130,246,0.13);
+          border: 1.5px solid #2563eb;
+        }
+        .find-agent-btn {
+          position: fixed;
+          bottom: 2rem;
+          right: 15rem;
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.85rem 2.4rem;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.85) 60%, rgba(59,130,246,0.15) 100%);
+          box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18), 0 2px 12px 0 rgba(59,130,246,0.10);
+          border: 1.5px solid rgba(59,130,246,0.18);
+          color: #2563eb;
+          font-family: 'Inter', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          transition: all 0.18s cubic-bezier(.4,0,.2,1);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          overflow: hidden;
+        }
+        .find-agent-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: radial-gradient(circle at 60% 40%, rgba(59,130,246,0.13) 0%, rgba(59,130,246,0.04) 100%);
+          z-index: 0;
+        }
+        .find-agent-btn:hover, .find-agent-btn:focus {
           color: #fff;
           background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
           box-shadow: 0 12px 36px 0 rgba(59,130,246,0.22), 0 4px 16px 0 rgba(59,130,246,0.13);
