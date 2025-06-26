@@ -524,15 +524,22 @@ type AgentCardProps = {
   name: string;
   description: string;
   tags: string[];
-  icon: string;
+  icon: React.ReactNode;
   rating?: number;
   onClick: () => void;
+  hidePreviewButton?: boolean;
+  children?: React.ReactNode;
 };
 
-function AgentCard({ name, description, tags, icon, rating, onClick }: AgentCardProps) {
+function AgentCard({ name, description, tags, icon, rating, onClick, hidePreviewButton = false, children }: AgentCardProps) {
+  const emojiMotion = {
+    rest: { y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 200, damping: 10 } },
+    hover: { y: -6, scale: 1.15, transition: { type: 'spring' as const, stiffness: 300, damping: 12 } },
+  };
+
   return (
     <div 
-      className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start group hover:scale-[1.02] cursor-pointer hover:bg-gray-50"
+      className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start group hover:scale-[1.02] cursor-pointer hover:bg-gray-50 h-[340px] flex flex-col justify-between"
       onClick={onClick}
     >
       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-100 via-pink-100 to-white flex items-center justify-center text-2xl mb-3 shadow-inner">{icon}</div>
@@ -549,7 +556,10 @@ function AgentCard({ name, description, tags, icon, rating, onClick }: AgentCard
           <span className="font-semibold text-gray-700">{rating}/5</span>
         </div>
       )}
-      <button className="mt-auto bg-blue-600 text-white px-5 py-2 rounded-full font-semibold text-sm shadow hover:bg-blue-700 hover:shadow-lg transition-all duration-200 focus:outline-none w-full sm:w-auto">Preview Agent</button>
+      {!hidePreviewButton && (
+        <button className="mt-auto bg-blue-600 text-white px-5 py-2 rounded-full font-semibold text-sm shadow hover:bg-blue-700 hover:shadow-lg transition-all duration-200 focus:outline-none w-full sm:w-auto">Preview Agent</button>
+      )}
+      {children && <div className="w-full">{children}</div>}
     </div>
   );
 }
@@ -790,4 +800,6 @@ export default function ExploreAgentsPage() {
       />
     </div>
   );
-} 
+}
+
+export { AgentCard }; 
