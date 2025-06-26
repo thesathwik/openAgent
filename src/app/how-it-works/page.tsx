@@ -113,10 +113,10 @@ export default function HowItWorks() {
       <div className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-3xl font-serif italic text-gray-800">
-            "There's an agent for that."
+            &quot;There&apos;s an agent for that.&quot;
           </p>
           <p className="mt-4 text-lg text-gray-600">
-            Empower your workflow. Or someone else's.
+            Empower your workflow. Or someone else&apos;s.
           </p>
         </div>
       </div>

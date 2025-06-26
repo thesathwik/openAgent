@@ -1,3 +1,4 @@
+'use client';
 import { Navbar, Hero, BackgroundNetwork } from "./components";
 
 export default function Home() {

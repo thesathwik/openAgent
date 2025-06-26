@@ -1,0 +1,16 @@
+name: Sales Lead Qualifier
+description: |
+  Automatically qualifies inbound leads by analyzing form submissions and CRM data, then routes high-potential leads to sales reps.
+category: Sales & Marketing
+tags:
+  - sales
+  - lead qualification
+  - CRM
+  - automation
+author: GrowthAI
+version: 2.1.0
+entrypoint: lead_qualifier.py
+parameters:
+  crm_provider: Salesforce
+  min_score: 70
+  notify_slack: true 

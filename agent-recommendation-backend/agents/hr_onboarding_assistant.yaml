@@ -1,0 +1,16 @@
+name: HR Onboarding Assistant
+description: |
+  Guides new employees through onboarding, collects documents, and answers HR-related questions.
+category: Human Resources
+tags:
+  - HR
+  - onboarding
+  - employee experience
+  - workflow
+author: PeopleOpsAI
+version: 1.3.0
+entrypoint: onboarding_assistant.py
+parameters:
+  welcome_email: true
+  checklist_template: default
+  feedback_survey: onboarding_survey_v2 

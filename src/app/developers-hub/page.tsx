@@ -321,7 +321,16 @@ license: "MIT"`}
 }
 
 // TemplateBlock component
-function TemplateBlock({ icon, title, desc, code, expanded, onToggle, codeClass, extra }: any) {
+function TemplateBlock({ icon, title, desc, code, expanded, onToggle, codeClass, extra }: {
+  icon: string;
+  title: string;
+  desc: string;
+  code: string;
+  expanded: boolean;
+  onToggle: () => void;
+  codeClass: string;
+  extra?: React.ReactNode;
+}) {
   return (
     <div className="rounded-xl p-6 bg-white border border-gray-100 shadow-sm">
       <div className="flex items-center mb-2">

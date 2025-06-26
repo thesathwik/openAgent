@@ -1,0 +1,16 @@
+name: Invoice Processing Agent
+description: |
+  Extracts, validates, and enters invoice data from emails and PDFs into your accounting system.
+category: Finance & Operations
+tags:
+  - finance
+  - invoice
+  - OCR
+  - automation
+author: FinBotics
+version: 0.9.2
+entrypoint: invoice_agent.py
+parameters:
+  ocr_engine: tesseract
+  accounting_software: QuickBooks
+  auto_approve_below: 500 

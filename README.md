@@ -41,3 +41,29 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 \n## Backend Server\n\nStart the backend API server for sign up and sign in:\n```bash\nnpm run server\n```\nThe server listens on port 4000 and stores user data in `data/users.json`.\n
+
+## Agent Recommendation Backend (FastAPI)
+
+A Python FastAPI service for semantic agent search and recommendation using OpenAI embeddings and Pinecone vector DB.
+
+### Setup
+1. `cd agent-recommendation-backend`
+2. `pip install -r requirements.txt`
+3. Create a `.env` file with your OpenAI and Pinecone keys (see below).
+4. Run `python ingest.py` to index agents.
+5. Start the API: `uvicorn main:app --reload --port 8000`
+
+### .env Example
+```
+OPENAI_API_KEY=sk-...
+PINECONE_API_KEY=...
+PINECONE_ENVIRONMENT=us-west1-gcp
+PINECONE_INDEX=agents-index
+```
+
+### Endpoints
+- `POST /search` — Semantic + metadata agent search
+
+### Ingestion
+- Place agent YAMLs in `agents/<agent_id>/agent.yaml`
+- Run `python ingest.py` to (re)index
